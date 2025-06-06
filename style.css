@@ -1,0 +1,136 @@
+/* style.css */
+
+body {
+    font-family: 'Nanum Myeongjo', serif;
+    background-color: #f8f8f8;
+    margin: 0;
+    padding: 20px;
+    color: #333;
+  }
+  
+  .main-title {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+  
+  .input-section,
+  .menu-list,
+  .total-section,
+  .order-section {
+    background: #fff;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .input-section label,
+  .menu-list h2 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    display: block;
+  }
+  
+  .input-section input[type="number"] {
+    width: 60px;
+    padding: 5px;
+    font-size: 1rem;
+    margin-top: 5px;
+  }
+  
+  .menu-list .menu-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .menu-list .menu-item span {
+    font-size: 1rem;
+  }
+  
+  .menu-list .menu-item input.qty {
+    width: 50px;
+    padding: 4px;
+    font-size: 1rem;
+  }
+  
+  .total-section {
+    font-size: 1.2rem;
+    text-align: right;
+  }
+  
+  .next-button {
+    display: block;
+    width: 100%;
+    background-color: #e67e22;
+    color: #fff;
+    font-size: 1.1rem;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  
+  .next-button:hover {
+    background-color: #d35400;
+  }
+  
+  .selection-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .sel-item-name {
+    font-size: 1rem;
+  }
+  
+  .selection-item input.sel-qty {
+    width: 50px;
+    padding: 5px;
+    font-size: 1rem;
+  }
+  
+  #selection-container h2 {
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+  }
+  
+  .person-result {
+    background: #fff;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .person-result h2 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+  }
+  
+  .person-result ul {
+    list-style: none;
+    padding-left: 0;
+  }
+  
+  .person-result li {
+    font-size: 1rem;
+    margin-bottom: 6px;
+  }
+  
+  .grand-total {
+    background: #fff;
+    border-radius: 8px;
+    padding: 15px;
+    text-align: center;
+    font-size: 1.3rem;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  }
+  
