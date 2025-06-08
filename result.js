@@ -56,27 +56,33 @@ function renderFinalResult() {
       const ul = document.createElement("ul");
       let personSubtotal = 0; // 이 사람 소계
 
-      selections[i].forEach((choice) => {
-        // choice: { id, name, qty:1, price }
-        const itemId = choice.id;
-        const itemName = choice.name;
-        const itemPrice = choice.price;
-        const countSelected = countPerItem[itemId] || 1; // 0 방지
+      // ③ 각 항목별 분담금 계산 및 렌더링 (수정 버전)
+selections[i].forEach((choice) => {
+  const itemId   = choice.id;
+  const itemName = choice.name;
+  const unitPrice= choice.price;
 
-        // 분담금 = itemPrice / countSelected
-        // 소수점 둘째 자리까지 표현
-        const splitPrice = itemPrice / countSelected;
-        const splitPriceFixed = parseFloat(splitPrice.toFixed(0)); 
-        // 위 toFixed(0)는 “반올림”하여 정수 원 단위로 표현. 
-        // 소수점 둘째 자리까지 보고 싶으면 toFixed(2) 사용
+  // 이 메뉴를 선택한 사람 수
+  const countSelected = countPerItem[itemId] || 1;
 
-        personSubtotal += splitPriceFixed;
-        grandTotal += splitPriceFixed;
+  // 원 주문 목록에서 실제 주문된 수량(qty) 가져오기
+  const originalItem = orderList.find(item => item.id === itemId);
+  const totalQty     = originalItem ? originalItem.qty : 1;
 
-        const li = document.createElement("li");
-        li.innerText = `${itemName} ×1 × ₩${itemPrice.toLocaleString()} ÷ ${countSelected}명 = ₩${splitPriceFixed.toLocaleString()}`;
-        ul.appendChild(li);
-      });
+  // 전체 가격 = 단가 × 주문 수량
+  const totalPrice = unitPrice * totalQty;
+
+  // 1인당 분담금 = 전체 가격 ÷ 선택 인원
+  const rawSplit = totalPrice / countSelected;
+  const splitPriceFixed = Math.round(rawSplit); // 반올림
+
+  personSubtotal += splitPriceFixed;
+  grandTotal    += splitPriceFixed;
+
+  const li = document.createElement("li");
+  li.innerText = `${itemName} ×${totalQty}개 × ₩${unitPrice.toLocaleString()} ÷ ${countSelected}명 = ₩${splitPriceFixed.toLocaleString()}`;
+  ul.appendChild(li);
+});
 
       personDiv.appendChild(ul);
 
